@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# githubog: http://ogp.me/ns/fb/githubog#">
-    <meta charset='utf-8'>
-    <title>HP FrontEnd Course</title>
-  </head>
-  <body>
-
-  </body>
-  </html>
+<head>
+	<meta charset='utf-8'>
+	<title>HP FrontEnd Course</title>
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script type="text/javascript" src="js/staticData.js"></script>
+  <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+	<div class="container">
+    <h2>
+      YouTube Playlist
+    </h2>
+    <br/>
+    <div class="row">
+        <div class="span4">
+          <ul id="youtube-list" class="youtube-list unstyled">
+          </ul>
+        </div>
+        <div class="span6 offset1">
+          <div id="video-player" class="video-player">
+            <iframe id="videoPlayeriframe" width="420" height="315" src="//www.youtube.com/embed/NfSTq8WWpno" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+    </div>
+    <hr/>
+    <h2>
+        Playlist
+      </h2>    
+    <div class="row">
+      <div class="span12 playlist-container">
+        <ul id="playlist" class="playlist unstyled inline">
+        </ul>    
+      </div>
+    </div>
+  </div>
+</body>
+</html>
