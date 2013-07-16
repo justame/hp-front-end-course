@@ -1,0 +1,14 @@
+/* youtube playlist */
+ul.youtube-list{max-height:500px;overflow:auto;}
+ul.youtube-list li{border-bottom:solid 1px #CCC;padding:10px;text-align:center;cursor:pointer;}
+ul.youtube-list li:hover{background:#CCC;}
+ul.youtube-list li img{width: 100px;}
+
+/* playlist */
+.playlist-container{overflow-x:auto;overflow-y:auto;margin-top:20px;}
+.playlist-container ul.playlist{min-width:2000px;height:250px;}
+.playlist-container ul.playlist li{text-align:center;width:200px;}
+.playlist-container ul.playlist li img{margin-bottom:10px;width:150px;}
+
+/* video player */
+.video-player iframe{width:500px;height:500px;}
