@@ -5,9 +5,6 @@
 	<title>HP FrontEnd Course</title>
   <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/index.css">
-  <script type="text/javascript" src="js/staticData.js"></script>
-  <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -18,13 +15,23 @@
     <div class="row">
         <div class="span4">
           <div class="filter-container">
-            <input id="video-filter" type="text" placeholder="Filter Video" onkeyup="youtubeListHanlder.filterVideos(this.value)" />  
+            <input id="video-filter" type="text" placeholder="Filter Video" />  
           </div>
           <ul id="youtube-list" class="youtube-list unstyled">
+            <li>
+              <div>
+                <strong>Video Title</strong>
+              </div>
+              <div>
+                <img src="https://i.ytimg.com/vi/U6fTu6J7V0I/hqdefault.jpg">
+              </div>
+              <input type="button" value="Add" class="btn">
+            </li>            
           </ul>
         </div>
         <div class="span6 offset1">
           <div id="video-player" class="video-player">
+            <iframe id="videoPlayeriframe" width="420" height="315" src="//www.youtube.com/embed/J4IoXZpJ6XQ" frameborder="0" allowfullscreen=""></iframe>
           </div>
         </div>
     </div>
@@ -35,6 +42,17 @@
     <div class="row">
       <div class="span12 playlist-container">
         <ul id="playlist" class="playlist unstyled inline">
+          <li>
+            <div>
+              <strong>Title</strong>
+            </div>
+            <div>
+              <img src="https://i.ytimg.com/vi/J4IoXZpJ6XQ/hqdefault.jpg">
+            </div>
+            <div>
+              <input type="button" value="Select" class="btn" /><input type="button" value="Remove" class="btn btn-danger" />
+            </div>
+          </li>        
         </ul>    
       </div>
     </div>
