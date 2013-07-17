@@ -1,16 +1,29 @@
 var youtubeListHanlder = {};
 
 youtubeListHanlder._playlist = {};
+youtubeListHanlder._videoList = [];
 
-youtubeListHanlder.getItemsList = function(){
-	return window.youtubeListData.data.items;
+youtubeListHanlder.fetchItemsList = function(searchQuery, callback){
+	if(searchQuery.length > 0){
+		$.ajax('youtube/videos',{
+			type: 'GET',
+			dataType : 'json',
+			data:{
+				q: searchQuery
+			}
+		}).done(function(data){
+			callback(data.data.items);
+		});
+	}else{
+		callback({});
+	}
 };
 
 youtubeListHanlder.getItem = function(id){
 	var item = null;
-	for(var i=0;i<youtubeListData.data.items.length;i++){
-		if(youtubeListData.data.items[i].id == id){
-			item = youtubeListData.data.items[i];
+	for(var i=0;i< youtubeListHanlder._videoList.length;i++){
+		if(youtubeListHanlder._videoList[i].id == id){
+			item = youtubeListHanlder._videoList[i];
 			break;
 		}
 	}
@@ -29,7 +42,7 @@ youtubeListHanlder.getYoutubeListItemTemplate = function(item){
 	itemTemplate += "                <img src=\"" + item.thumbnail.hqDefault + "\" \/>";
 	itemTemplate += "              <\/div>";
 	itemTemplate += "              <br/>";	
-	itemTemplate += "              <input type=\"button\" value=\"Add\" class=\"btn\" onclick=\"youtubeListHanlder.addToPlaylist('" + item.id +"')\" \/>";
+	itemTemplate += "              <input type=\"button\" value=\"Add\" class=\"btn\" onclick=\"youtubeListHanlder.addToPlaylistByItemId('" + item.id +"')\" \/>";
 	itemTemplate += "            <\/li>";
 
 
@@ -71,11 +84,16 @@ youtubeListHanlder.getPlaylist = function(){
 	return JSON.parse(localStorage.getItem("playlist"));
 };
 
-youtubeListHanlder.addToPlaylist = function(id){
-	var item = youtubeListHanlder.getItem(id), $item = null;
-	if(youtubeListHanlder._playlist[id] === undefined || youtubeListHanlder._playlist[id] === null){
+youtubeListHanlder.addToPlaylistByItemId = function(id){
+	var item = youtubeListHanlder.getItem(id);
+	youtubeListHanlder.addToPlaylist(item);
+};
+
+youtubeListHanlder.addToPlaylist = function(item){
+	var $item = null;
+	if(youtubeListHanlder._playlist[item.id] === undefined || youtubeListHanlder._playlist[item.id] === null){
 		$item = $(youtubeListHanlder.getPlaylistItemTemplate(item));
-		youtubeListHanlder._playlist[id] = item;
+		youtubeListHanlder._playlist[item.id] = item;
 		youtubeListHanlder.savePlaylist(youtubeListHanlder._playlist, function(){
 			$('#playlist').append($item);
 		});
@@ -107,7 +125,7 @@ youtubeListHanlder.remove = function(id){
 };
 
 youtubeListHanlder.filterVideos = function(filterStr){
-	var items = youtubeListHanlder.getItemsList();
+	var items = youtubeListHanlder._videoList;
 	var filterdList = [];
 	
 	youtubeListHanlder.clearYoutubeList();
@@ -132,13 +150,18 @@ youtubeListHanlder.clearYoutubeList = function(){
 youtubeListHanlder.init = function(){
 	// generate youtube list
 	youtubeListHanlder.clearYoutubeList();
-	$.each(youtubeListHanlder.getItemsList(), function(index, item){
-		youtubeListHanlder.addItemToYoutubeList(item);
+	
+	youtubeListHanlder.fetchItemsList('dbz', function(items){
+		youtubeListHanlder._videoList = items;
+
+		$.each(youtubeListHanlder._videoList, function(index, item){
+			youtubeListHanlder.addItemToYoutubeList(item);
+		});
 	});
 
 	// generate playlist list
 	$.each(youtubeListHanlder.getPlaylist(), function(index, item){
-		youtubeListHanlder.addToPlaylist(item.id);
+		youtubeListHanlder.addToPlaylist(item);
 	});
 };
 
