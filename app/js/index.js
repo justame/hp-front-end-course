@@ -3,7 +3,7 @@ var youtubeListHanlder = {};
 youtubeListHanlder._playlist = {};
 
 youtubeListHanlder.getItemsList = function(){
-	return youtubeListData.data.items;
+	return window.youtubeListData.data.items;
 };
 
 youtubeListHanlder.getItem = function(id){
@@ -11,9 +11,9 @@ youtubeListHanlder.getItem = function(id){
 	for(var i=0;i<youtubeListData.data.items.length;i++){
 		if(youtubeListData.data.items[i].id == id){
 			item = youtubeListData.data.items[i];
-			break; 
+			break;
 		}
-	};
+	}
 	return item;
 };
 
@@ -73,7 +73,7 @@ youtubeListHanlder.getPlaylist = function(){
 
 youtubeListHanlder.addToPlaylist = function(id){
 	var item = youtubeListHanlder.getItem(id), $item = null;
-	if(youtubeListHanlder._playlist[id] == void(0) || youtubeListHanlder._playlist[id] === null){
+	if(youtubeListHanlder._playlist[id] === undefined || youtubeListHanlder._playlist[id] === null){
 		$item = $(youtubeListHanlder.getPlaylistItemTemplate(item));
 		youtubeListHanlder._playlist[id] = item;
 		youtubeListHanlder.savePlaylist(youtubeListHanlder._playlist, function(){
