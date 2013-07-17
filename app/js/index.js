@@ -48,7 +48,7 @@ youtubeListHanlder.getPlaylistItemTemplate = function(item){
 	itemTemplate += "              <img src=\"" + item.thumbnail.hqDefault + "\">";
 	itemTemplate += "            <\/div>";
 	itemTemplate += "            <div>";
-	itemTemplate += "              <input type=\"button\" value=\"Play\" class=\"btn\" onclick=\"youtubeListHanlder.play('" + item.id +"')\"\/>";
+	itemTemplate += "              <input type=\"button\" value=\"Select\" class=\"btn\" onclick=\"youtubeListHanlder.selectVideo('" + item.id +"')\"\/>";
 	itemTemplate += "              <input type=\"button\" value=\"Remove\" class=\"btn btn-danger\" onclick=\"youtubeListHanlder.removeFromPlaylist('" + item.id +"')\"\/>";
 	itemTemplate += "            <\/div>";
 	itemTemplate += "          <\/li>";
@@ -59,7 +59,7 @@ youtubeListHanlder.getPlaylistItemTemplate = function(item){
 youtubeListHanlder.getPlayerTemplate = function(item){
 	var videoPlayerTemplate="";
 	videoPlayerTemplate += "<iframe id=\"videoPlayeriframe\" width=\"420\" height=\"315\" src='//www.youtube.com/embed/" + item.id +"' frameborder=\"0\" allowfullscreen><\/iframe>";
-	return videoPlayerTemplate
+	return videoPlayerTemplate;
 };
 
 youtubeListHanlder.savePlaylist = function(playlist, callback){
@@ -73,15 +73,15 @@ youtubeListHanlder.getPlaylist = function(){
 
 youtubeListHanlder.addToPlaylist = function(id){
 	var item = youtubeListHanlder.getItem(id), $item = null;
-	if(youtubeListHanlder._playlist[id] == void(0) || youtubeListHanlder._playlist[id] == null){
-		var $item = $(youtubeListHanlder.getPlaylistItemTemplate(item));
+	if(youtubeListHanlder._playlist[id] == void(0) || youtubeListHanlder._playlist[id] === null){
+		$item = $(youtubeListHanlder.getPlaylistItemTemplate(item));
 		youtubeListHanlder._playlist[id] = item;
 		youtubeListHanlder.savePlaylist(youtubeListHanlder._playlist, function(){
 			$('#playlist').append($item);
-		});		
+		});
 	}else{
 		console.log('item is already in the list');
-	};
+	}
 };
 
 youtubeListHanlder.removeFromPlaylist = function(id){
@@ -89,15 +89,15 @@ youtubeListHanlder.removeFromPlaylist = function(id){
 	delete youtubeListHanlder._playlist[id];
 	youtubeListHanlder.savePlaylist(youtubeListHanlder._playlist, function(){
 		$('#playlist-item-' + id).remove();
-	});		
+	});
 };
 
 youtubeListHanlder.addItemToYoutubeList = function(item){
 	var itemTemplate = youtubeListHanlder.getYoutubeListItemTemplate(item);
-	$('#youtube-list').append(itemTemplate);	
+	$('#youtube-list').append(itemTemplate);
 };
 
-youtubeListHanlder.play = function(id){
+youtubeListHanlder.selectVideo = function(id){
 	var item = youtubeListHanlder.getItem(id);
 	$('#video-player').html(youtubeListHanlder.getPlayerTemplate(item));
 };
@@ -106,18 +106,43 @@ youtubeListHanlder.remove = function(id){
 	var item = youtubeListHanlder.getItem(id);
 };
 
-youtubeListHanlder.init = function(){
+youtubeListHanlder.filterVideos = function(filterStr){
+	var items = youtubeListHanlder.getItemsList();
+	var filterdList = [];
 	
+	youtubeListHanlder.clearYoutubeList();
+	
+	$.each(items, function(index, item){
+		if(item.title.toLowerCase().indexOf(filterStr.toLowerCase()) > -1){
+			filterdList.push(item)
+		}
+	});
+	
+	$.each(filterdList, function(index, item){
+		youtubeListHanlder.addItemToYoutubeList(item);
+	});
+
+	return filterdList;
+};
+
+youtubeListHanlder.clearYoutubeList = function(){
+	$('#youtube-list').html('');
+};
+
+youtubeListHanlder.init = function(){
 	// generate youtube list
-	$.each(youtubeListData.data.items, function(index, item){
+	youtubeListHanlder.clearYoutubeList();
+	$.each(youtubeListHanlder.getItemsList(), function(index, item){
 		youtubeListHanlder.addItemToYoutubeList(item);
 	});
 
 	// generate playlist list
 	$.each(youtubeListHanlder.getPlaylist(), function(index, item){
 		youtubeListHanlder.addToPlaylist(item.id);
-	})	
+	});
 };
+
+
 
 $(function(){
 	youtubeListHanlder.init();
