@@ -23,7 +23,10 @@ In this course you will have to develop Youtube playlist, the course is divided 
 The page should look like the "step2.png" in the "printscreens" directory
 
 ####Step 3
-- Change the list to fetch the videos list via AJAX (data from the server) instead from the static data file
+- Add Search box above the filter on the left column
+- Change the list to fetch the videos list via AJAX (data from the server) using search box ,instead from the static data file
+
+The page should look like the "step3.png" in the "printscreens" directory
 
 
 Setup Environment
