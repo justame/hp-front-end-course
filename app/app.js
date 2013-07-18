@@ -7,27 +7,14 @@ app.use(express.static(path.join(__dirname)));
 
 app.use(express.bodyParser());
  
-/*app.get('/endpoint', function(req, res){
-	var obj = {};
-	obj.title = 'title';
-	obj.data = 'data';
-	
-	console.log('params: ' + JSON.stringify(req.params));
-	console.log('body: ' + JSON.stringify(req.body));
-	console.log('query: ' + JSON.stringify(req.query));
-	
-	res.header('Content-type','application/json');
-	res.header('Charset','utf8');
-	res.send(req.query.callback + '('+ JSON.stringify(obj) + ');');
-});*/
- 
 app.get('/youtube/videos', function(req, res){
-	request('https://gdata.youtube.com/feeds/api/videos?q='+req.query.q+'&max-re‌​sults=10&v=2&alt=jsonc&orderby=published&key=AIzaSyBab_zW5gNWV2oRAii4QrkfmWCPpk7PjY4', function (error, response, body) {
-	  if (!error && response.statusCode == 200) {
-	   res.send(body);
+    request('https://gdata.youtube.com/feeds/api/videos?q='+req.query.q+'&max-re‌​sults=10&v=2&alt=jsonc&orderby=published&key=AIzaSyBab_zW5gNWV2oRAii4QrkfmWCPpk7PjY4', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+       res.send(body);
       }
-	});
-	
+    });
+
 });
 
 app.listen(8080);
+
