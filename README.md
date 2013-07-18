@@ -3,6 +3,10 @@ HP Front End Course
 
 Overview
 --------
+In this course you will have to develop Youtube playlist, the course is divided to 3 steps,
+#Step 1 
+-Integrate Twitter Bootstrap on a static page and  build a basic layout
+-Build static playlist and embed Youtube video with no javascript or data fetched from the server
 
 
 Setup Environment
@@ -16,6 +20,6 @@ Setup Environment
 5. Go to the path **"C:\Development\hp-front-end-course-master\app"** and run the commands
  - **"npm install express"**
  - **"npm install request"**
-6. Run the Nodejs server - **"node app.js"** and you are ready to go...
+6. Run the Nodejs server - **"node app.js"** and you are ready to go... the server will run on localhost port **9080**
 
 
