@@ -7,6 +7,7 @@ In this course you will have to develop Youtube playlist, the course is divided 
 
 ####Step 1 
 - Integrate Twitter Bootstrap on a static page and  build a basic layout
+
 - Build static playlist and embed Youtube video with no javascript or data fetched from the server
 
 ####Step 2
