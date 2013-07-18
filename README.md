@@ -9,7 +9,7 @@ In this course you will have to develop Youtube playlist, the course is divided 
 - Build a basic layout, use [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
 - Build static playlist and embed Youtube video with no javascript or data fetched from the server
 
- The page should look like the "step1.png" in the "printscreens" directory
+ The page should look like the [step1.png](https://github.com/justame/hp-front-end-course/blob/master/printscreens/step1.png) in the "printscreens" directory
 
 ####Step 2
 - Add [jQuery](http://jquery.com/) to the static page 
@@ -20,13 +20,13 @@ In this course you will have to develop Youtube playlist, the course is divided 
 - Add the functionality to remove a video from the playlist
 - Add the functionality to watch a video when the user clicks on it
 
-The page should look like the "step2.png" in the "printscreens" directory
+The page should look like the [step2.png](https://github.com/justame/hp-front-end-course/blob/master/printscreens/step2.png) in the "printscreens" directory
 
 ####Step 3
 - Add Search box above the filter on the left column
 - Click on the search button will make AJAX request to the running web server(NodeJs) server that will pull the data and will update the video list
 
-The page should look like the "step3.png" in the "printscreens" directory
+The page should look like the [step3.png](https://github.com/justame/hp-front-end-course/blob/master/printscreens/step3.png) in the "printscreens" directory
 
 
 Setup Environment
@@ -46,6 +46,6 @@ Setup Environment
  - **"npm install express"**
  - **"npm install request"**
 7. Run the Nodejs server - **"node app.js"** and you are ready to go... the server will run on localhost port **8080**
-8. To check if the server is returning data go to the **http://localhost:8080/youtube/videos** via the browser you can try send a query too like this -**http://localhost:8080/youtube/videos?q="hp company"**
+8. To check if the server is returning data go to the **http://localhost:8080/youtube/videos** via the browser you can try send a query too like this - **http://localhost:8080/youtube/videos?q="hp company"**
 
 
