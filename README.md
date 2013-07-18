@@ -1,5 +1,8 @@
 HP Front End Course
 ====================
 
-Step 1
--------
+Setup Environment
+-----------------
+
+#####Seeding the dump
+test
