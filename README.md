@@ -4,7 +4,7 @@ HP Front End Course
 Overview
 --------
 In this course you will have to develop Youtube playlist, the course is divided to 3 steps,
-#Step 1 
+####Step 1 
 -Integrate Twitter Bootstrap on a static page and  build a basic layout
 -Build static playlist and embed Youtube video with no javascript or data fetched from the server
 
