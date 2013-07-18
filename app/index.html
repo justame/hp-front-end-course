@@ -10,28 +10,29 @@
   <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
-	<div class="container">
-    <h2>
-      YouTube Playlist
-    </h2>
-    <br/>
+  <div class="container">
+    <header>
+      <h1>
+        HP Front End Course
+      </h1>
+    </header>
+
     <div class="row">
-        <div class="span4">
-          <div class="filter-container">
-            <input id="video-filter" type="text" placeholder="Filter Video" onkeyup="youtubeListHanlder.filterVideos(this.value)" />  
+        <aside class="span4">
+          <div >
+            <div class="filter-container">
+              <input id="video-filter" type="text" placeholder="Filter Video" onkeyup="youtubeListHanlder.filterVideos(this.value);" />  
+            </div>
+            <ul id="youtube-list" class="youtube-list unstyled">
+            </ul>
           </div>
-          <ul id="youtube-list" class="youtube-list unstyled">
-          </ul>
-        </div>
-        <div class="span6 offset1">
+        </aside>
+        <div class="span8">
           <div id="video-player" class="video-player">
+            <iframe id="videoPlayeriframe" width="420" height="315" src="//www.youtube.com/embed/J4IoXZpJ6XQ" frameborder="0" allowfullscreen=""></iframe>
           </div>
         </div>
     </div>
-    <hr/>
-    <h2>
-        Playlist
-      </h2>    
     <div class="row">
       <div class="span12 playlist-container">
         <ul id="playlist" class="playlist unstyled inline">
