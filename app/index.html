@@ -1,9 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="hpApp">
 <head>
-	<meta charset='utf-8'>
-	<title>HP FrontEnd Course</title>
+  <meta charset='utf-8'>
+  <title>HP FrontEnd Course</title>
+  
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  
+  <script type="text/javascript" src="lib/angular.min.js"></script>
+  <script type="text/javascript" src="lib/angular-resource.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
+  <div class="container" ng-controller="youtube-playlist">
+    <header>
+      <h1>
+        HP Front End Course
+      </h1>
+    </header>
+
+    <div class="row">
+        <aside class="span4">
+          <div >
+            <div class="form-horizontal search-form">
+              <input id="search-text" type="text" placeholder="" />
+              <input type="button" class="btn" value="Search" onclick="youtubeListHanlder.search($('#search-text').val());" />
+            </div>
+            <div class="filter-container">
+              <input id="video-filter" type="text" placeholder="Filter Video" ng-model="filterQuery"/>  
+            </div>
+            <ul class="youtube-list unstyled">
+              <li ng-repeat="video in videoList | filter:filterQuery">
+                <div>
+                  <strong>{{video.title}}</strong>
+                </div>
+                <div>
+                  <img ng-src="{{video.thumbnail.hqDefault}}" />
+                  <input type="button" value="Add" class="btn" ng-click="addToPlaylist($index)">
+                </div>
+              </li>                
+            </ul>
+          </div>
+        </aside>
+        <div class="span8">
+          <div id="video-player" class="video-player">
+            <iframe id="videoPlayeriframe" width="420" height="315" src="//www.youtube.com/embed/{{selectedVideo.id}}" frameborder="0" allowfullscreen="" ng-show="selectedVideo != null"></iframe>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="span12 playlist-container">
+        <ul id="playlist" class="playlist unstyled inline">
+            <li ng-repeat="video in playlist">
+              <div>
+                <strong>{{video.title}}</strong>
+              </div>
+              <div>
+                <img ng-src="{{video.thumbnail.hqDefault}}" />
+              </div>
+              <div>
+                <input type="button" value="Select" class="btn" ng-click="selectVideo($index)" />  
+                <input type="button" value="Remove" class="btn btn-danger" ng-click="removeFromPlaylist($index)" />
+              </div>
+            </li>          
+        </ul>    
+      </div>
+    </div>
+  </div>
 </body>
 </html>
