@@ -19,6 +19,19 @@ youtubeListHanlder.fetchItemsList = function(searchQuery, callback){
 	}
 };
 
+youtubeListHanlder.search = function(searchQuery){
+	searchQuery = searchQuery.trim();
+	if(searchQuery.length > 0){
+		youtubeListHanlder.fetchItemsList(searchQuery, function(items){
+			youtubeListHanlder._videoList = items;
+			youtubeListHanlder.clearYoutubeList();
+			$.each(youtubeListHanlder._videoList, function(index, item){
+				youtubeListHanlder.addItemToYoutubeList(item);
+			});
+		});
+	}
+};
+
 youtubeListHanlder.getItem = function(id){
 	var item = null;
 	for(var i=0;i< youtubeListHanlder._videoList.length;i++){
@@ -149,15 +162,9 @@ youtubeListHanlder.clearYoutubeList = function(){
 
 youtubeListHanlder.init = function(){
 	// generate youtube list
-	youtubeListHanlder.clearYoutubeList();
 	
-	youtubeListHanlder.fetchItemsList('dbz', function(items){
-		youtubeListHanlder._videoList = items;
-
-		$.each(youtubeListHanlder._videoList, function(index, item){
-			youtubeListHanlder.addItemToYoutubeList(item);
-		});
-	});
+	
+	
 
 	// generate playlist list
 	$.each(youtubeListHanlder.getPlaylist(), function(index, item){
