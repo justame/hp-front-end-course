@@ -14,9 +14,9 @@ In this course you will have to develop Youtube playlist, the course is divided 
 ####Step 2
 - Add [jQuery](http://jquery.com/) to the static page 
 - Use the static data file to emulates the server data **(app/js/StaticData.js)**
-- Build the Youtube list (left column) that fetched from the static data ,using jQuery - only view
-- Build the Youtube playlist using jQuery- only view
-- Add the functionality to add video from the list to the playlist -  “Add to playlist” button
+- Build the Youtube list (left column) that fetched from the static data ,using jQuery
+- Build the Youtube playlist using jQuery
+- Add the functionality to add video from the list to the playlist -  “Add to playlist” button, the playlist will be stored in the [**localStorage**](http://www.w3schools.com/html/html5_webstorage.asp) and after refreshing the page it the playlist should populate itself from the [**localStorage**]localStorage(http://www.w3schools.com/html/html5_webstorage.asp) 
 - Add the functionality to remove a video from the playlist
 - Add the functionality to watch a video when the user clicks on it
 
@@ -24,7 +24,7 @@ The page should look like the "step2.png" in the "printscreens" directory
 
 ####Step 3
 - Add Search box above the filter on the left column
-- Change the list to fetch the videos list via AJAX (data from the server) using search box ,instead from the static data file
+- Click on the search button will make AJAX request to the running web server(NodeJs) server that will pull the data and will update the video list
 
 The page should look like the "step3.png" in the "printscreens" directory
 
@@ -46,5 +46,6 @@ Setup Environment
  - **"npm install express"**
  - **"npm install request"**
 7. Run the Nodejs server - **"node app.js"** and you are ready to go... the server will run on localhost port **8080**
+8. To check if the server is returning data go to the **http://localhost:8080/youtube/videos** via the browser you can try send a query too like this -**http://localhost:8080/youtube/videos?q="hp company"**
 
 
