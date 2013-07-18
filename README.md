@@ -16,7 +16,7 @@ In this course you will have to develop Youtube playlist, the course is divided 
 - Use the static data file to emulates the server data **(app/js/StaticData.js)**
 - Build the Youtube list (left column) that fetched from the static data ,using jQuery
 - Build the Youtube playlist using jQuery
-- Add the functionality to add video from the list to the playlist -  “Add to playlist” button, the playlist will be stored in the [**localStorage**](http://www.w3schools.com/html/html5_webstorage.asp) and after refreshing the page it the playlist should populate itself from the [**localStorage**]localStorage(http://www.w3schools.com/html/html5_webstorage.asp) 
+- Add the functionality to add video from the list to the playlist -  “Add to playlist” button, the playlist will be stored in the [**localStorage**](http://www.w3schools.com/html/html5_webstorage.asp) and after refreshing the page it the playlist should populate itself from the [**localStorage**](http://www.w3schools.com/html/html5_webstorage.asp) 
 - Add the functionality to remove a video from the playlist
 - Add the functionality to watch a video when the user clicks on it
 
