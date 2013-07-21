@@ -29,7 +29,7 @@ The page should look like the [step2.png](https://github.com/justame/hp-front-en
 
 The page should look like the [step3.png](https://github.com/justame/hp-front-end-course/blob/master/printscreens/step3.png) in the "printscreens" directory
 
-**IMPORTANT NOTE**
+**IMPORTANT NOTE - **
 when switching between steps Always clean the localStorage of the website - [clean localStorage](https://github.com/justame/hp-front-end-course/blob/master/printscreens/clean_local_storage.png)
 
 Setup Environment
