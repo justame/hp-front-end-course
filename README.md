@@ -25,7 +25,7 @@ The page should look like the [step2.png](https://github.com/justame/hp-front-en
 ####Step 3
 - Add Search box above the filter on the left column
 - Click on the search button will make AJAX request to the running web server(NodeJs) server that will pull the data and will update the video list
-
+- To fetch data from the server send GET request "/youtube/videos?q=myQuery" 
 The page should look like the [step3.png](https://github.com/justame/hp-front-end-course/blob/master/printscreens/step3.png) in the "printscreens" directory
 
 
