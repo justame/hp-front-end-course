@@ -5,12 +5,8 @@ var hpApp = angular.module('hpApp',['ngResource']);
 
 hpApp.controller('youtube-playlist', function($scope, $resource){
   var videoResource = $resource('youtube/videos/',{}); 
-  $scope.videoList = videoResource.query({query: 'dbz'}).$then(function(response){
-    $scope.videoList = response.data.data.items;
-  });
-
+  $scope.videoList = []; 
   $scope.playlist = JSON.parse(localStorage.getItem("playlist"));
-
   $scope.selectedVideo = null;
 
   function _updateLocalStorage(){
@@ -22,7 +18,7 @@ hpApp.controller('youtube-playlist', function($scope, $resource){
     if($scope.playlist.indexOf(video) == -1){
       $scope.playlist.push(video);
       _updateLocalStorage();
-    };
+    }
   };
 
   $scope.removeFromPlaylist = function(index){
