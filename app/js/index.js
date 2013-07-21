@@ -3,7 +3,7 @@ var youtubeListHanlder = {};
 youtubeListHanlder._playlist = {};
 
 youtubeListHanlder.getItemsList = function(){
-	return window.youtubeListData.data.items;
+	return window.youtubeListData.data.items; // "window.youtubeListData" variable was created at the file "js/staticData.js"
 };
 
 youtubeListHanlder.getItem = function(id){
@@ -17,6 +17,7 @@ youtubeListHanlder.getItem = function(id){
 	return item;
 };
 
+// to convert html to javascript you can use this convertor - http://accessify.com/tools-and-wizards/developer-tools/html-javascript-convertor/
 youtubeListHanlder.getYoutubeListItemTemplate = function(item){
 	var itemTemplate="";
 	itemTemplate += "            <li>";
@@ -36,6 +37,7 @@ youtubeListHanlder.getYoutubeListItemTemplate = function(item){
 	return itemTemplate;
 };
 
+// to convert html to javascript you can use this convertor - http://accessify.com/tools-and-wizards/developer-tools/html-javascript-convertor/
 youtubeListHanlder.getPlaylistItemTemplate = function(item){
 	var itemTemplate="";
 	itemTemplate += "          <li id=\"playlist-item-" + item.id + "\">";
@@ -63,12 +65,12 @@ youtubeListHanlder.getPlayerTemplate = function(item){
 };
 
 youtubeListHanlder.savePlaylist = function(playlist, callback){
-	localStorage.setItem("playlist",JSON.stringify(playlist));
+	localStorage.setItem("playlist",JSON.stringify(playlist)); // JSON.stringify convert javascript object and convert it to string
 	callback(playlist);
 };
 
 youtubeListHanlder.getPlaylist = function(){
-	return JSON.parse(localStorage.getItem("playlist"));
+	return JSON.parse(localStorage.getItem("playlist")); // JSON.parse convert JSON string into javascript object
 };
 
 youtubeListHanlder.addToPlaylist = function(id){
@@ -77,7 +79,7 @@ youtubeListHanlder.addToPlaylist = function(id){
 		$item = $(youtubeListHanlder.getPlaylistItemTemplate(item));
 		youtubeListHanlder._playlist[id] = item;
 		youtubeListHanlder.savePlaylist(youtubeListHanlder._playlist, function(){
-			$('#playlist').append($item);
+			$('#playlist').append($item); // http://api.jquery.com/append/
 		});
 	}else{
 		console.log('item is already in the list');
@@ -88,7 +90,7 @@ youtubeListHanlder.removeFromPlaylist = function(id){
 	var item = youtubeListHanlder.getItem(id);
 	delete youtubeListHanlder._playlist[id];
 	youtubeListHanlder.savePlaylist(youtubeListHanlder._playlist, function(){
-		$('#playlist-item-' + id).remove();
+		$('#playlist-item-' + id).remove(); // http://api.jquery.com/remove/
 	});
 };
 
@@ -112,7 +114,7 @@ youtubeListHanlder.filterVideos = function(filterStr){
 	
 	youtubeListHanlder.clearYoutubeList();
 	
-	$.each(items, function(index, item){
+	$.each(items, function(index, item){ // http://api.jquery.com/jQuery.each/
 		if(item.title.toLowerCase().indexOf(filterStr.toLowerCase()) > -1){
 			filterdList.push(item)
 		}
@@ -126,11 +128,11 @@ youtubeListHanlder.filterVideos = function(filterStr){
 };
 
 youtubeListHanlder.clearYoutubeList = function(){
-	$('#youtube-list').html('');
+	$('#youtube-list').html(''); // http://api.jquery.com/html/
 };
 
 youtubeListHanlder.init = function(){
-	// generate youtube list
+	// generate youtube list (left column)
 	youtubeListHanlder.clearYoutubeList();
 	$.each(youtubeListHanlder.getItemsList(), function(index, item){
 		youtubeListHanlder.addItemToYoutubeList(item);
@@ -143,7 +145,7 @@ youtubeListHanlder.init = function(){
 };
 
 
-
+// waiting for dom to b ready and execute the init function
 $(function(){
 	youtubeListHanlder.init();
 });
