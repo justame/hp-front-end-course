@@ -23,8 +23,8 @@
         <aside class="span4">
           <div >
             <div class="form-horizontal search-form">
-              <input id="search-text" type="text" placeholder="" />
-              <input type="button" class="btn" value="Search" onclick="youtubeListHanlder.search($('#search-text').val());" />
+              <input id="search-text" type="text" placeholder="" ng-model="searchStr" />
+              <input type="button" class="btn" value="Search" ng-click="search()" />
             </div>
             <div class="filter-container">
               <input id="video-filter" type="text" placeholder="Filter Video" ng-model="filterQuery"/>  
