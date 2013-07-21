@@ -5,7 +5,7 @@ youtubeListHanlder._videoList = [];
 
 youtubeListHanlder.fetchItemsList = function(searchQuery, callback){
 	if(searchQuery.length > 0){
-		$.ajax('youtube/videos',{
+		$.ajax('youtube/videos',{ // http://api.jquery.com/jQuery.ajax/
 			type: 'GET',
 			dataType : 'json',
 			data:{
@@ -161,11 +161,6 @@ youtubeListHanlder.clearYoutubeList = function(){
 };
 
 youtubeListHanlder.init = function(){
-	// generate youtube list
-	
-	
-	
-
 	// generate playlist list
 	$.each(youtubeListHanlder.getPlaylist(), function(index, item){
 		youtubeListHanlder.addToPlaylist(item);
